@@ -1097,22 +1097,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
 		
     case embargo: 
-      //+2 Coins
-      state->coins = state->coins + 2;
-			
-      //see if selected pile is in play
-      if ( state->supplyCount[choice1] == -1 )
-	{
-	  return -1;
-	}
-			
-      //add embargo token to selected supply pile
-      state->embargoTokens[choice1]++;
-			
-      //trash card
-      discardCard(handPos, currentPlayer, state, 1);		
-      return 0;
-		
+	return embargoCardEffect(choice1, handPos, state);
+	
     case outpost:
       //set outpost flag
       state->outpostPlayed++;
@@ -1365,6 +1351,29 @@ int great_hallCardEffect(int handPos, struct gameState *state){
 			
         //discard card from hand
         discardCard(handPos, currentPlayer, state, 0);
+        return 0;
+	
+}
+
+int embargoCardEffect(int choice1, int handPos, struct gameState *state){
+        
+	// local var setup
+	int currentPlayer = whoseTurn(state);
+	
+	//+2 Coins
+        state->coins = state->coins + 2;
+			
+        //see if selected pile is in play
+        if ( state->supplyCount[choice1] == -1 )
+  	{
+	  return -1;
+	}
+			
+        //add embargo token to selected supply pile
+        state->embargoTokens[choice1]++;
+			
+        //trash card
+        discardCard(handPos, currentPlayer, state, 1);		
         return 0;
 	
 }
