@@ -14,5 +14,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3,
 int adventurerCardEffect(struct gameState *state);
 int smithyCardEffect(int handPos, struct gameState *state);
 int villageCardEffect(int handPos, struct gameState *state);
+int great_hallCardEffect(int handPos, struct gameState *state);
 
 #endif
