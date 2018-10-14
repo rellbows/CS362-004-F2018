@@ -1281,7 +1281,8 @@ int adventurerCardEffect(struct gameState *state){
 	int temphand[MAX_HAND];
 	int z = 0;
 
-      while(drawntreasure<2){
+	// BUG below: while loop conditional IS '<=', S/B '<'.
+      while(drawntreasure<=2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -1316,7 +1317,8 @@ int smithyCardEffect(int handPos, struct gameState *state){
 	}
 			
 	//discard card from hand
-	discardCard(handPos, currentPlayer, state, 0);
+	// BUG below: 'discardCard' function not called
+	//discardCard(handPos, currentPlayer, state, 0);
 	return 0;
 
 }
@@ -1330,7 +1332,8 @@ int villageCardEffect(int handPos, struct gameState *state){
         drawCard(currentPlayer, state);
 			
         //+2 Actions
-        state->numActions = state->numActions + 2;
+	// BUG below: 'numActions' IS + 3, S/B +2
+        state->numActions = state->numActions + 3;
 			
         //discard played card from hand
         discardCard(handPos, currentPlayer, state, 0);
@@ -1370,7 +1373,8 @@ int embargoCardEffect(int choice1, int handPos, struct gameState *state){
 	}
 			
         //add embargo token to selected supply pile
-        state->embargoTokens[choice1]++;
+	// BUG below: embargo token is not added to selected supply pile
+        //state->embargoTokens[choice1]++;
 			
         //trash card
         discardCard(handPos, currentPlayer, state, 1);		
