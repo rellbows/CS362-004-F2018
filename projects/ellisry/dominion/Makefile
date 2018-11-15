@@ -48,6 +48,9 @@ unittestresults: unitTest1.c unitTest2.c cardTest1.c dominion.o rngs.o
 	./cardTest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
+randTestAdv: randomtestadventurer.c dominion.o rngs.o
+	gcc -o randTestAdv randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
