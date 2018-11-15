@@ -48,8 +48,33 @@ unittestresults: unitTest1.c unitTest2.c cardTest1.c dominion.o rngs.o
 	./cardTest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
+randomtestresults: randomtestadventurer.c randomtestcard1.c randomtestcard2.c dominion.o rngs.o
+	echo "Result for running randomtestadventurer tests:" >> randomtestadventurer.out
+	echo "randomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o randomtestadventurer dominion.o rngs.o randomtestadventurer.c $(CFLAGS)
+	./randomtestadventurer >> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+
+	echo "Result for running randomtestcard1 tests:" >> randomtestcard1.out
+	echo "randomtestcard1.c:" >> randomtestcard1.out
+	gcc -o randomtestcard1 dominion.o rngs.o randomtestcard1.c $(CFLAGS)
+	./randomtestcard1 >> randomtestcard1.out
+	gcov dominion.c >> randomtestcard1.out
+
+	echo "Result for running randomtestcard2 tests:" >> randomtestcard2.out
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 dominion.o rngs.o randomtestcard2.c $(CFLAGS)
+	./randomtestcard2 >> randomtestcard2.out
+	gcov dominion.c >> randomtestcard2.out
+
 randTestAdv: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randTestAdv randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+
+randTest1: randomtestcard1.c dominion.o rngs.o
+	gcc -o randTest1 randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+randTest2: randomtestcard2.c dominion.o rngs.o
+	gcc -o randTest2 randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

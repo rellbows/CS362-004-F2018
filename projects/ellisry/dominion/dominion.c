@@ -1374,7 +1374,7 @@ int embargoCardEffect(int choice1, int handPos, struct gameState *state){
 			
         //add embargo token to selected supply pile
 	// BUG below: embargo token is not added to selected supply pile
-        //state->embargoTokens[choice1]++;
+       // state->embargoTokens[choice1]++;
 			
         //trash card
         discardCard(handPos, currentPlayer, state, 1);		
