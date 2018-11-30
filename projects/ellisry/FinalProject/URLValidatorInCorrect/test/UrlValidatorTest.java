@@ -35,6 +35,7 @@ public class UrlValidatorTest extends TestCase {
 	   String url;
 	   boolean expected = true;
 	   boolean result = true;
+	   
 	   //Ports to check
 	   ResultPair[] testPorts = {new ResultPair(":-1", false),
 			   new ResultPair(":0", true),
@@ -59,11 +60,39 @@ public class UrlValidatorTest extends TestCase {
 	   }
    }
    
-   public void testYourSecondPartition(){
-		 //You can use this function to implement your Second Partition testing	   
+   public void testSchemePartition(){
+	   
+	   //Setup testing variables
+	   String authority = "www.google.com";    // We know this is a valid authority
+	   UrlValidator urlVal = new UrlValidator();    // initializes validator with default schemes - http, https and ftp
+	   StringBuilder testBuffer = new StringBuilder();
+	   String url;
+	   boolean expected = true;
+	   boolean result = true;
+	   
+	   // Schemes to check
+	   ResultPair[] testSchemes = {new ResultPair("http", false),
+			   new ResultPair("http:/", true),
+			   new ResultPair("http://", true)};
+	   
+	   //Build test URL's using test schemes + known valid authority
+	   for(int i = 0; i < testSchemes.length; ++i) {
+		   // build test URL
+		   testBuffer.append(testSchemes[i].item);
+		   testBuffer.append(authority);
+		   expected = testSchemes[i].valid;
+		   url = testBuffer.toString();
+		   result = urlVal.isValid(url);
+		   assertEquals(url, expected, result);
+		   if(expected == result) {
+			   System.out.printf("isValid() PASSED: %s - Expected: %s, Result: %s\n", url, expected, result);
+		   } else {
+			   System.out.printf("isValid() FAILED: %s - Expected: %s, Result: %s\n", url, expected, result);
+		   }
+		   testBuffer = new StringBuilder();
+	   }
 
    }
-   //You need to create more test cases for your Partitions if you need to 
    
    public void testIsValid()
    {
