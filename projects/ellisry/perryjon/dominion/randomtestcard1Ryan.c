@@ -16,7 +16,7 @@
 #define TESTCARD "smithy"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 0
+#define NOISY_TEST 1
 
 // number of random games to run
 #define NUM_GAMES 20
@@ -26,7 +26,7 @@
 
 int main(){
     int test1Pass = 0;   // keeps track of how many test 1's passed
-    int newToHand = 3;   // should have 2 more treasure cards after play
+    int newToHand = 3;   // should have 3 more treasure cards after play
     int newToDiscard = 1;    // should have 1 more card in discard pile
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed, numPlayers;    // going to randomize these
@@ -58,7 +58,7 @@ int main(){
 
         // Test 1: to ensure player 0 has three more cards in hand
         if(NOISY_TEST){
-            printf("Test 1 - Player 0's Has 2 More Cards In Hand\n");
+            printf("Test 1 - Player 0's Has 3 More Cards In Hand\n");
             // analyze num of cards in test game hand vs. expected
             printf("Num Cards In Player 0's Hand: %d, Expected: %d\n", testG.handCount[0], (G.handCount[0] + newToHand));
         }
@@ -69,7 +69,7 @@ int main(){
     }
 
     printf("\nTest Summary:\n");
-    printf("Test 1 - Player 0's Has 2 More Cards In Hand - PASS: %d, FAIL: %d\n", test1Pass, (NUM_GAMES - test1Pass));
+    printf("Test 1 - Player 0's Has 3 More Cards In Hand - PASS: %d, FAIL: %d\n", test1Pass, (NUM_GAMES - test1Pass));
     
     return 0;
 }

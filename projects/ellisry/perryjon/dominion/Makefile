@@ -56,6 +56,26 @@ randomtestcard1:
 randomtestcard2:
 	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard2.c unittestHelper.c unittestHelper.h rngs.o -o randomtestcard2 -lm -g
 
+# For Ryan's scripts
+randomtestadventurerRyan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestadventurerRyan.c rngs.o -o randomtestadventurerRyan -lm -g
+
+randomtestcard1Ryan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard1Ryan.c rngs.o -o randomtestcard1Ryan -lm -g
+
+randomtestcard2Ryan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o randomtestcard2Ryan.c rngs.o -o randomtestcard2Ryan -lm -g
+
+cardTest1Ryan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o cardTest1Ryan.c rngs.o -o cardTest1Ryan -lm -g
+
+unitTest1Ryan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unitTest1Ryan.c rngs.o -o unitTest1Ryan -lm -g
+
+unitTest2Ryan:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unitTest2Ryan.c rngs.o -o unitTest2Ryan -lm -g
+
+
 unittestresults:
 	./unittest1 &> unittestresult.out
 	gcov unittest1.c >> unittestresult.out
@@ -113,4 +133,4 @@ player: player.c interface.o
 all: playdom player unit1 unit2 unit3 unit4 card1 card2 card3 card4 randomtestadventurer randomtestcard1 randomtestcard2 randomtestresults
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestadventurer randomtestcard1 randomtestcard2 randomtestresults *.gcov *.gcda *.gcno *.so *.out *.exe testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe randomtestadventurerRyan randomtestcard1Ryan randomtestcard2Ryan cardtest1Ryan unitTest1Ryan unitTest2Ryan unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestadventurer randomtestcard1 randomtestcard2 randomtestresults *.gcov *.gcda *.gcno *.so *.out *.exe testDrawCard testDrawCard.exe

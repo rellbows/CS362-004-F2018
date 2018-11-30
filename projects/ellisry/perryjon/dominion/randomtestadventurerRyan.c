@@ -16,7 +16,7 @@
 #define TESTCARD "adventurer"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 0
+#define NOISY_TEST 1
 
 // number of random games to run
 #define NUM_GAMES 20
