@@ -61,9 +61,9 @@ int main(){
     else
     	printf("FAIL: Amount in deck after playing smithy is NET -3.\n\n");
 
-    printf("Discard Count: %d, Expected: %d\n", testG.discardCount[thisPlayer], (G.discardCount[thisPlayer] + discarded));
+    printf("Discard Count: %d, Expected: %d\n", testG.playedCardCount, (G.playedCardCount + discarded));
 
-    if(testG.discardCount[thisPlayer] == (G.discardCount[thisPlayer] + discarded))
+    if(testG.playedCardCount == (G.playedCardCount + discarded))
     	printf("PASS: Amount in discard pile after playing smithy is NET +1.\n\n");
     else
     	printf("FAIL: Amount in discard pile after playing smithy is NET +1.\n\n");

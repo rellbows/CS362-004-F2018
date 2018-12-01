@@ -29,7 +29,7 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-unit1:
+unit1: dominion.o rngs.o unittest1.c unittestHelper.c unittestHelper.h
 	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest1.c unittestHelper.c unittestHelper.h rngs.o -o unittest1 -lm -g
 unit2:
 	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest2.c unittestHelper.c unittestHelper.h rngs.o -o unittest2 -lm -g

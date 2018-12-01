@@ -799,7 +799,8 @@ int smithyEffect(struct gameState *state, int *currentPlayer, int handPos){
         drawCard(*currentPlayer, state);
     }
     //discard card from hand
-    discardCard(handPos, *currentPlayer, state, 1); // ADD BUG HERE - CHANGE 0 TO 1 so that the card is not added to the played pile
+    // CORRECTED BUG INTRODUCED BY JONATHON. TRASH FLAG WAS 1; IS 0.
+    discardCard(handPos, *currentPlayer, state, 0); // ADD BUG HERE - CHANGE 0 TO 1 so that the card is not added to the played pile
     return 0;
 }
 int villageEffect(struct gameState *state, int *currentPlayer, int handPos){
